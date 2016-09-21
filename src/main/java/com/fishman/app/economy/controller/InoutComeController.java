@@ -4,6 +4,7 @@ import com.fishman.app.economy.common.redis.RedisClientTemplate;
 import com.fishman.app.economy.model.InoutCome;
 import com.fishman.app.economy.service.InoutComeService;
 import com.fishman.app.economy.service.UserService;
+import com.fishman.app.economy.util.ConstantUtil;
 import com.fishman.app.economy.util.DateStyle;
 import com.fishman.app.economy.util.DateUtil;
 import com.fishman.app.economy.util.RespCodeUtil;
@@ -11,6 +12,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by hema on 16/9/21.
@@ -57,6 +61,17 @@ public class InoutComeController {
             }
             inoutComeService.saveIncome(inoutCome);
             return RespCodeUtil.success();
+        }
+        return RespCodeUtil.error(RespCodeUtil.e10000);
+    }
+
+    @RequestMapping(value = "/{type}/list",method = RequestMethod.POST)
+    public String getInoutComeList(@PathVariable(value="type") String type){
+        if(ConstantUtil.InoutComeType.Income==Integer.parseInt(type)){
+            List<InoutCome> inoutComeList = inoutComeService.getInoutComeList(Integer.parseInt(type));
+            Map<String,List<InoutCome>>  data = new HashMap<String, List<InoutCome>>();
+            data.put("inoutComeList",inoutComeList);
+            return RespCodeUtil.success(data);
         }
         return RespCodeUtil.error(RespCodeUtil.e10000);
     }

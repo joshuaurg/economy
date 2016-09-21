@@ -6,4 +6,9 @@
         INSERT INTO t_inout (money,uid,categoryId,startDate,endDate,status,creTime,updateTime,type)
         VALUES (#{money},#{uid},#{categoryId},#{startDate},#{endDate},#{status},#{creTime},#{updateTime},#{type})
     </insert>
+
+    <select id="getInoutComeList" parameterType="java.lang.Integer" resultType="inoutCome">
+        SELECT * FROM t_inout WHERE type = #{type}
+    </select>
+
 </mapper>

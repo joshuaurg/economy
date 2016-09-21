@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by hema on 16/9/21.
  */
@@ -21,5 +23,10 @@ public class InoutComeServiceImpl implements InoutComeService {
     @Override
     public void saveIncome(InoutCome inoutCome) {
         inoutComeDao.save(inoutCome);
+    }
+
+    @Override
+    public List<InoutCome> getInoutComeList(int type) {
+        return inoutComeDao.getInoutComeList(type);
     }
 }
