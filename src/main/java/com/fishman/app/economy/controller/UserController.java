@@ -4,12 +4,10 @@ import com.fishman.app.economy.model.User;
 import com.fishman.app.economy.service.UserService;
 import com.fishman.app.economy.util.RespCodeUtil;
 import com.fishman.app.economy.util.PasswordUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,15 +15,16 @@ import java.util.Map;
 /**
  * Created by hema on 16/9/21.
  */
-@Controller
+@RestController
 @RequestMapping(value = "/user")
+@Api(value = "/user")
 public class UserController {
 
     @Autowired
     UserService userService;
 
+    @ApiOperation(value = "/register", notes = "注册", response = Void.class)
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    @ResponseBody
     public String register(@RequestParam(value="username",required=true) String username,
                            @RequestParam(value="password",required=true) String password,
                            @RequestParam(value="role",required=true) String role){
