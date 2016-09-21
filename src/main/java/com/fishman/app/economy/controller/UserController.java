@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by hema on 16/9/21.
@@ -66,6 +68,8 @@ public class UserController {
         }else{
             return RespCodeUtil.error(RespCodeUtil.e20000);
         }
-        return RespCodeUtil.success();
+        Map<String,User> data = new HashMap<String, User>();
+        data.put("user",u);
+        return RespCodeUtil.success(data);
     }
 }

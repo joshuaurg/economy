@@ -37,4 +37,13 @@ public class RespCodeUtil {
         ret.put("msg", pro.getProperties(e00000));
         return JsonUtil.object2String(ret);
     }
+    public static<T> String success(Map<String,T> data) {
+        Map<String, Object> ret = new HashMap<String, Object>();
+        ret.put("code", e00000);
+        ret.put("status", "success");
+        ret.put("msg", pro.getProperties(e00000));
+        ret.put("data",data);
+        return JsonUtil.object2String(ret);
+    }
+
 }

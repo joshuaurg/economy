@@ -10,5 +10,18 @@
         select * from t_user where id = #{id}
     </select>
 
+    <select id="getUser" parameterType="user" resultType="user">
+        select * from t_user
+        <where>
+            <if test="username != null">
+              username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="user">
+        INSERT INTO t_user (username,password,creTime,updateTime,role)
+        VALUES (#{username},#{password},#{creTime},#{updateTime},#{role})
+    </insert>
 
 </mapper>

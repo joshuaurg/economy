@@ -14,7 +14,7 @@ import java.security.SecureRandom;
 public class PasswordUtil {
 
     public static String password = "economy-password";
-    public static String salt     = "economy-salt";
+    public static String salt     = "12345678";
     /**
      * JAVA6支持以下任意一种算法
      * PBEWITHMD5ANDDES

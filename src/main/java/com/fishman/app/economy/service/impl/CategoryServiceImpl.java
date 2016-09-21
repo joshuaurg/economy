@@ -16,7 +16,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CategoryServiceImpl implements CategoryService {
 
-    @Autowired
-    CategoryDao categoryDao;
 
 }

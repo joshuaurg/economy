@@ -16,8 +16,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class InoutComeServiceImpl implements InoutComeService {
 
-    @Autowired
-    InoutComeDao inoutComeDao;
-
 
 }
