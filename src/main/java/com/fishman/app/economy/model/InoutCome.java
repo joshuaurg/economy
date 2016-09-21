@@ -8,14 +8,15 @@ import java.util.Date;
 /**
  * Created by hema on 16/9/21.
  */
-public class InoutCome extends BaseModel implements Serializable{
+public class InoutCome extends BaseModel implements Serializable {
 
-   private Double money;
-   private Long uid;
-   private Integer typeId;
-   private Date startDate;
-   private Date endDate;
-   private Integer  status;
+    private Double money;
+    private Long uid;
+    private Integer categoryId;
+    private Date startDate;
+    private Date endDate;
+    private Integer status;
+    private Integer type;
 
     public Double getMoney() {
         return money;
@@ -33,13 +34,9 @@ public class InoutCome extends BaseModel implements Serializable{
         this.uid = uid;
     }
 
-    public Integer getTypeId() {
-        return typeId;
-    }
+    public Integer getCategoryId() {return categoryId;}
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
-    }
+    public void setCategoryId(Integer categoryId) {this.categoryId = categoryId;}
 
     public Date getStartDate() {
         return startDate;
@@ -64,4 +61,8 @@ public class InoutCome extends BaseModel implements Serializable{
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    public Integer getType() {return type;}
+
+    public void setType(Integer type) {this.type = type;}
 }

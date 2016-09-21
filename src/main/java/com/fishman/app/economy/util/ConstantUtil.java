@@ -11,4 +11,10 @@ public class ConstantUtil {
         public static Integer WIFE = 2;
         public static Integer CHILD = 3;
     }
+
+    // 收支类别
+    public static class InoutComeType {
+        public static Integer Income = 1;
+        public static Integer Outcome = 2;
+    }
 }

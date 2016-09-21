@@ -11,6 +11,7 @@ public class User extends BaseModel implements Serializable{
     private String password;
     private Integer role;
 
+    private String accessToken;
     public String getPassword() {
         return password;
     }
@@ -33,5 +34,13 @@ public class User extends BaseModel implements Serializable{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 }

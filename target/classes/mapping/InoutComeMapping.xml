@@ -2,4 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fishman.app.economy.dao.InoutComeDao" >
 
+    <insert id="save" parameterType="inoutCome">
+        INSERT INTO t_inout (money,uid,categoryId,startDate,endDate,status,creTime,updateTime,type)
+        VALUES (#{money},#{uid},#{categoryId},#{startDate},#{endDate},#{status},#{creTime},#{updateTime},#{type})
+    </insert>
 </mapper>

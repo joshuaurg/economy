@@ -1,12 +1,15 @@
 package com.fishman.app.economy.controller;
 
+import com.fishman.app.economy.common.redis.RedisClientTemplate;
 import com.fishman.app.economy.model.User;
 import com.fishman.app.economy.service.UserService;
+import com.fishman.app.economy.util.MD5Util;
 import com.fishman.app.economy.util.RespCodeUtil;
 import com.fishman.app.economy.util.PasswordUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,7 +25,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
+    @Autowired
+    RedisClientTemplate redis;
     @ApiOperation(value = "/register", notes = "注册", response = Void.class)
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String register(@RequestParam(value="username",required=true) String username,
@@ -67,7 +71,11 @@ public class UserController {
         }else{
             return RespCodeUtil.error(RespCodeUtil.e20000);
         }
+        String accessToken = MD5Util.MD5(username+ System.currentTimeMillis());
+        redis.set("accessToken-"+accessToken,u.getId()+"");
+        redis.expire("accessToken-"+accessToken,1*24*60*60);//有效期一天
         Map<String,User> data = new HashMap<String, User>();
+        u.setAccessToken(accessToken);
         data.put("user",u);
         return RespCodeUtil.success(data);
     }
