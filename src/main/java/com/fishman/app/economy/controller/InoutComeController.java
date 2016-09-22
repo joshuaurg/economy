@@ -65,7 +65,8 @@ public class InoutComeController {
         return RespCodeUtil.error(RespCodeUtil.e10000);
     }
 
-    @RequestMapping(value = "/{type}/list",method = RequestMethod.POST)
+    @RequestMapping(value = "/{type}/list",method = RequestMethod.GET)
+    @ResponseBody
     public String getInoutComeList(@PathVariable(value="type") String type){
         if(ConstantUtil.InoutComeType.Income==Integer.parseInt(type)){
             List<InoutCome> inoutComeList = inoutComeService.getInoutComeList(Integer.parseInt(type));
